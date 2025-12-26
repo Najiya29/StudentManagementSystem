@@ -18,9 +18,7 @@ import edu.cjc.sms.app.serviceimpl.StudentService;
 public class StudentController 
 {
 	@Autowired
-	private StudentServiceInt ssi;
-	
-	List<Student> list = new ArrayList<Student>();
+	StudentServiceInt ssi;
 	
 	@RequestMapping("/")
 	public String preLogin()
@@ -28,7 +26,7 @@ public class StudentController
 		return "login";
 	}
 	
-	@RequestMapping("login")
+	@RequestMapping("/login")
 	public String login(@RequestParam("username") String un, @RequestParam("password") String ps, Model m)
 	{
 		if(un.equalsIgnoreCase("admin") && ps.equalsIgnoreCase("admin"))
@@ -42,25 +40,38 @@ public class StudentController
 		}
 	}
 
-	@RequestMapping("enroll")
+	@RequestMapping("/enroll")
 	public String enroll()
 	{
 		return "adminscreen";
 	}
 	
-	@RequestMapping("enroll_student")
-	public String saveStudent(@ModelAttribute Student student)
-	{
+	@RequestMapping("/enroll_student")
+	public String saveStudent(@ModelAttribute Student student, Model m)
+	{	
 		ssi.saveStudentDetails(student);
 		return "adminscreen";
 	}
 	
-	@RequestMapping("view")
-	public String showData(@ModelAttribute Student stu, Model m)
+	@RequestMapping("/view")
+	public String viewAllData(@ModelAttribute Student stu, Model m)
 	{
-		
+			List<Student> list = ssi.getStudentData();
+			m.addAttribute("data", list);
+			return "viewscreen";
+	}
+	
+	@RequestMapping("/log")
+	public String backToAdmin()
+	{
 		return "adminscreen";
 	}
 	
-	
+	@RequestMapping("/delete")
+	public String deleteData(@RequestParam("id") int id, Model m)
+	{
+		List<Student> list = ssi.deleteStudentById(id);
+		m.addAttribute("data", list);
+		return "viewscreen";
+	}
 }

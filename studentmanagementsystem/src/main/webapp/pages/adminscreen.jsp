@@ -34,8 +34,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" href="#">
-      <img src="images/cjclogo.jpeg" height="40" class="me-2 rounded">
-      CJC Admin
+      <img src="pictures/logo.webp" height="40" class="me-2 rounded">
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -46,7 +45,7 @@
     <div class="collapse navbar-collapse" id="adminNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="#enroll">Enroll</a></li>
-        <li class="nav-item"><a class="nav-link" href="#view">View</a></li>
+        <li class="nav-item"><a class="nav-link" href="view">View</a></li>
         <li class="nav-item"><a class="nav-link text-warning" href="/">Logout</a></li>
       </ul>
     </div>
@@ -83,7 +82,7 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label">College Name</label>
+                  <label class="form-label">Collage Name</label>
                   <input type="text" class="form-control" name="studentCollageName">
                 </div>
 
@@ -144,10 +143,6 @@
   </div>
 </section>
 
-<!-- ✅ View Section -->
-<section id="view" class="view py-5 text-center text-white">
-  <h1>View Student</h1>
-</section>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
