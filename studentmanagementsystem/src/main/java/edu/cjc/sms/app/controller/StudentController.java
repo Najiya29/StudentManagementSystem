@@ -23,6 +23,12 @@ public class StudentController
 	@RequestMapping("/")
 	public String preLogin()
 	{
+		return "alllogin";
+	}
+	
+	@RequestMapping("/alog")	
+	public String adminLog()
+	{
 		return "login";
 	}
 	
@@ -39,19 +45,20 @@ public class StudentController
 			return "login";
 		}
 	}
+	
+	@RequestMapping("/enrollForm")
+	public String openEnrollForm()
+	{
+		return "register";
+	}
 
 	@RequestMapping("/enroll")
-	public String enroll()
+	public String saveStudent(@ModelAttribute Student student)
 	{
-		return "adminscreen";
-	}
-	
-	@RequestMapping("/enroll_student")
-	public String saveStudent(@ModelAttribute Student student, Model m)
-	{	
 		ssi.saveStudentDetails(student);
-		return "adminscreen";
+		return "register";
 	}
+
 	
 	@RequestMapping("/view")
 	public String viewAllData(@ModelAttribute Student stu, Model m)
@@ -61,7 +68,7 @@ public class StudentController
 			return "viewscreen";
 	}
 	
-	@RequestMapping("/log")
+	@RequestMapping("/back")
 	public String backToAdmin()
 	{
 		return "adminscreen";
@@ -71,6 +78,38 @@ public class StudentController
 	public String deleteData(@RequestParam("id") int id, Model m)
 	{
 		List<Student> list = ssi.deleteStudentById(id);
+		m.addAttribute("data", list);
+		return "viewscreen";
+	}
+	
+	@RequestMapping("/searchByMode")
+	public String getStudentByBatchMode(@RequestParam("batchMode") String batchMode, Model m)
+	{
+		List<Student> list;
+		if(batchMode.isEmpty())
+		{
+			list = ssi.getStudentData();
+		}
+		else
+		{
+			list = ssi.getStudentByBatchMode(batchMode);
+		}
+		m.addAttribute("data", list);
+		return "viewscreen";
+	}
+	
+	@RequestMapping("/edit")
+	public String editData(@RequestParam("id") int studentID, Model m)
+	{
+		Student stu = ssi.getSingleStudent(studentID);
+		m.addAttribute("s", stu);
+		return "edit";
+	}
+	
+	@RequestMapping("/update")
+	public String updateStudentData(@ModelAttribute Student student, Model m)
+	{
+		List<Student> list = ssi.updateStudent(student);
 		m.addAttribute("data", list);
 		return "viewscreen";
 	}

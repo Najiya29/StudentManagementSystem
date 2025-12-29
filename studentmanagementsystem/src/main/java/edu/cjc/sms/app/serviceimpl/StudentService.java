@@ -36,5 +36,33 @@ public class StudentService implements StudentServiceInt{
 		sr.deleteById(id);
 		List<Student> list = sr.findAll();
 		return list;
+	}
+
+	@Override
+	public List<Student> getStudentByBatchMode(String batchMode) 
+	{
+		return sr.findByBatchModeIgnoreCase(batchMode);
+	}
+
+	@Override
+	public Student getSingleStudent(int studentID) 
+	{
+		Optional<Student> op = sr.findById(studentID);
+		if(op.isPresent())
+		{
+			Student student = op.get();
+			return student;
+		}
+		return null;
+	}
+
+	@Override
+	public List<Student> updateStudent(Student student) 
+	{
+		sr.save(student);
+		List<Student> list = sr.findAll();
+		return list;
 	}	
+	
+	
 }
