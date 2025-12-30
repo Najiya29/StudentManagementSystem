@@ -100,7 +100,18 @@ tbody tr:hover
 		<i class="bi bi-people-fill"></i> All Students Data
     </h2>
     
-	<form action="searchByMode" method="get" class="row mb-3">
+	<form action="searchByMode" method="get" class="row mb-2">   
+	<div class="col-md-4 ms-auto d-flex gap-2">
+		<select class="form-select" name="batchNo">
+           <option disabled selected>All Batch</option>
+           <option>FDJ-196</option>
+           <option>REG-196</option>
+           <option>FDJ-198</option>
+           <option>REG-198</option>
+           <option>FDJ-195</option>
+           <option>REG-195</option>
+        </select>
+	</div>         
 		<div class="col-md-4 ms-auto d-flex gap-2">
 			<select name="batchMode" class="form-select">
 				<option value="">All Modes</option>
@@ -128,7 +139,8 @@ tbody tr:hover
 					<th>Student Mode</th>
 					<th>Student Fees Paid</th>
 					<th>Delete</th>
-					<th>Update</th>
+					<th>Update Fees</th>
+					<th>Batch</th>
           		</tr>
         	</thead>
 
@@ -145,10 +157,9 @@ tbody tr:hover
               			<td>${stu.batchMode}</td>
               			<td>₹ ${stu.feesPaid}</td>
               			<td><a href="delete?id=${stu.studentID}" class="btn-delete" onclick="return confirm('Are you sure you want to delete this student?');">
-              			<i class="bi bi-trash-fill"></i> Delete</a>
-              			</td>
-              			<td><a href="edit?id=${stu.studentID}">Update</a>
-              			</td>
+              			<i class="bi bi-trash-fill"></i> Delete</a></td>
+              			<td><a href="fees?id=${stu.studentID}">Pay Fees</a></td>
+              			<td><a href="batchShift?batchMode=${stu.batchMode}">Shift Batch</a></td>
             		</tr>
           		</c:forEach>
 			</tbody>

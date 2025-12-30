@@ -10,5 +10,5 @@ import edu.cjc.sms.app.model.Student;
 @Repository
 public interface StudentRepo extends JpaRepository<Student, Integer>
 {
-	public List<Student> findByBatchModeIgnoreCase(String batchMode);
+	public List<Student> findAllByBatchModeAndBatchNoIgnoreCase(String batchMode, String batchNo);
 }

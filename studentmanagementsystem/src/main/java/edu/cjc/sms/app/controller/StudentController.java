@@ -83,33 +83,34 @@ public class StudentController
 	}
 	
 	@RequestMapping("/searchByMode")
-	public String getStudentByBatchMode(@RequestParam("batchMode") String batchMode, Model m)
+	public String getStudentByBatchMode(@RequestParam("batchMode") String batchMode,@RequestParam("batchNo") String batchNo,Model m)
 	{
-		List<Student> list;
-		if(batchMode.isEmpty())
+		List<Student> result = ssi.getStudentByBatchMode(batchMode,batchNo);
+		if(result.size()>0)
 		{
-			list = ssi.getStudentData();
+			m.addAttribute("data", result);
 		}
 		else
 		{
-			list = ssi.getStudentByBatchMode(batchMode);
+			List<Student> list = ssi.getStudentData();
+			m.addAttribute("data", list);
 		}
-		m.addAttribute("data", list);
 		return "viewscreen";
 	}
 	
-	@RequestMapping("/edit")
-	public String editData(@RequestParam("id") int studentID, Model m)
+	@RequestMapping("/fees")
+	public String updateFees(@RequestParam("id") int studentID, Model m)
 	{
 		Student stu = ssi.getSingleStudent(studentID);
-		m.addAttribute("s", stu);
-		return "edit";
+		m.addAttribute("stu", stu);
+		return "fees";
 	}
 	
 	@RequestMapping("/update")
-	public String updateStudentData(@ModelAttribute Student student, Model m)
+	public String updateStudentFess(@RequestParam("studentID") int studentID,@RequestParam("amount") double amount, Model m)
 	{
-		List<Student> list = ssi.updateStudent(student);
+		ssi.payFees(studentID,amount);
+		List<Student> list = ssi.getStudentData();
 		m.addAttribute("data", list);
 		return "viewscreen";
 	}

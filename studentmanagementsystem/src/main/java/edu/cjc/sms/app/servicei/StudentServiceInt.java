@@ -13,9 +13,10 @@ public interface StudentServiceInt
 
 	public List<Student> deleteStudentById(int id);
 
-	public List<Student> getStudentByBatchMode(String batchMode);
+	public List<Student> getStudentByBatchMode(String batchMode, String batchNo);
 
 	public Student getSingleStudent(int studentID);
-	
-	public List<Student> updateStudent(Student student);
+
+	public void payFees(int studentID, double amount);
+
 }

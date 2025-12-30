@@ -39,30 +39,38 @@ public class StudentService implements StudentServiceInt{
 	}
 
 	@Override
-	public List<Student> getStudentByBatchMode(String batchMode) 
+	public List<Student> getStudentByBatchMode(String batchMode, String batchNo) 
 	{
-		return sr.findByBatchModeIgnoreCase(batchMode);
+		return sr.findAllByBatchModeAndBatchNoIgnoreCase(batchMode, batchNo);
+	}	
+	
+	@Override
+	public Student getSingleStudent(int studentID) 
+	{
+//		Optional<Student> op = sr.findById(studentID);
+//		if(op.isPresent())
+//		{
+//			Student student = op.get();
+//			return student;
+//		}
+		return sr.findById(studentID).get();
 	}
 
 	@Override
-	public Student getSingleStudent(int studentID) 
+	public void payFees(int studentID, double amount) 
 	{
 		Optional<Student> op = sr.findById(studentID);
 		if(op.isPresent())
 		{
 			Student student = op.get();
-			return student;
+			student.setFeesPaid(student.getFeesPaid()+amount);
+			sr.save(student);
 		}
-		return null;
+		else
+		{
+			throw new ArithmeticException("No Student ID Found");
+		}
 	}
 
-	@Override
-	public List<Student> updateStudent(Student student) 
-	{
-		sr.save(student);
-		List<Student> list = sr.findAll();
-		return list;
-	}	
-	
 	
 }
