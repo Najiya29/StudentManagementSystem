@@ -79,7 +79,7 @@ body
   <div class="row justify-content-center g-4">
 
     <div class="col-sm-6 col-md-4 col-lg-3">
-      <div class="card dashboard-card shadow">
+      <div class="card dashboard-card shadow">  
         <h5>Enroll Student</h5>
         <a href="enrollForm" class="btn btn-success">Enroll</a>
       </div>

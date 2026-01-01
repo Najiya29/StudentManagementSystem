@@ -16,7 +16,7 @@
 body 
 {
 	min-height: 100vh;
-	background: url("pictures/pic.jpg") no-repeat center center fixed; 
+	background: url("pictures/edit.jpeg") no-repeat center center fixed; 
 	background-size: cover;
 	font-family: 'Segoe UI', sans-serif;
 }

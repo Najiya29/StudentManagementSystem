@@ -19,4 +19,8 @@ public interface StudentServiceInt
 
 	public void payFees(int studentID, double amount);
 
+	public void updateBatchMode(int studentID, String batchMode);
+	
+	public List<Student> updateStudent(Student student);
+
 }

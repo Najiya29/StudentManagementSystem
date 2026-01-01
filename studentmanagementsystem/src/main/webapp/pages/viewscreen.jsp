@@ -19,7 +19,7 @@
 body 
 {
 	min-height: 100vh;
-	background: url("pictures/view.avif") no-repeat center center fixed;
+	background: url("pictures/pic.jpg") no-repeat center center fixed;
 	background-size: cover;
 	font-family: 'Segoe UI', sans-serif;
 }
@@ -86,6 +86,11 @@ tbody tr:hover
 	border-radius: 30px;
 	padding: 10px 30px;
 }
+
+.form-select, .btn {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
 </style>
 
 </head>
@@ -100,30 +105,36 @@ tbody tr:hover
 		<i class="bi bi-people-fill"></i> All Students Data
     </h2>
     
-	<form action="searchByMode" method="get" class="row mb-2">   
-	<div class="col-md-4 ms-auto d-flex gap-2">
-		<select class="form-select" name="batchNo">
-           <option disabled selected>All Batch</option>
-           <option>FDJ-196</option>
-           <option>REG-196</option>
-           <option>FDJ-198</option>
-           <option>REG-198</option>
-           <option>FDJ-195</option>
-           <option>REG-195</option>
-        </select>
-	</div>         
-		<div class="col-md-4 ms-auto d-flex gap-2">
-			<select name="batchMode" class="form-select">
-				<option value="">All Modes</option>
-				<option value="Online">Online</option>
-				<option value="Offline">Offline</option>
-    		</select>
+	<form action="searchByMode" method="get" class="row g-2 mb-3 align-items-center justify-content-end">
 
-    		<button type="submit" class="btn btn-primary">
-				<i class="bi bi-search"></i> Search
-    		</button>
- 		 </div>
-	</form>
+    <div class="col-md-3">
+        <select class="form-select" name="batchNo">
+            <option value="">All Batches</option>
+            <option>FDJ-196</option>
+            <option>REG-196</option>
+            <option>FDJ-198</option>
+            <option>REG-198</option>
+            <option>FDJ-195</option>
+            <option>REG-195</option>
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <select name="batchMode" class="form-select">
+            <option value="">All Modes</option>
+            <option value="Online">Online</option>
+            <option value="Offline">Offline</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">
+            <i class="bi bi-search"></i> Search
+        </button>
+    </div>
+
+</form>
+
 
     <div class="table-responsive">
     	<table class="table table-bordered table-hover align-middle">
@@ -138,6 +149,7 @@ tbody tr:hover
 					<th>Student Batch Number</th>
 					<th>Student Mode</th>
 					<th>Student Fees Paid</th>
+					<th>Edit Info</th>
 					<th>Delete</th>
 					<th>Update Fees</th>
 					<th>Batch</th>
@@ -156,10 +168,37 @@ tbody tr:hover
               			<td>${stu.batchNo}</td>
               			<td>${stu.batchMode}</td>
               			<td>₹ ${stu.feesPaid}</td>
+              			
+              			<!--<td class="text-center"><a href="editInfo?id=${stu.studentID}" class="btn btn-sm btn-outline-primary">
+        				<i class="bi bi-pencil-square"></i> Update</a></td>-->
+        				
+   						<td class="text-center"><a href="editInfo?id=${stu.studentID}" class="btn btn-sm btn-link text-decoration-none text-primary fw-semibold">
+        				<i class="bi bi-pencil-square"></i> Update</a></td>
+			
               			<td><a href="delete?id=${stu.studentID}" class="btn-delete" onclick="return confirm('Are you sure you want to delete this student?');">
               			<i class="bi bi-trash-fill"></i> Delete</a></td>
-              			<td><a href="fees?id=${stu.studentID}">Pay Fees</a></td>
-              			<td><a href="batchShift?batchMode=${stu.batchMode}">Shift Batch</a></td>
+              			
+              		<!--<td class="text-center"><a href="fees?id=${stu.studentID}" class="btn btn-sm btn-success">
+        				<i class="bi bi-currency-rupee"></i> Pay Fees</a></td>-->
+        				
+        				<td class="text-center"><a href="fees?id=${stu.studentID}" class="btn btn-sm btn-outline-success">
+        				<i class="bi bi-wallet2"></i> Pay Fees</a></td>
+        				
+        			<!--<td class="text-center"><a href="fees?id=${stu.studentID}" class="btn btn-sm btn-outline-success" data-bs-toggle="tooltip" title="Pay Fees">
+        				<i class="bi bi-currency-rupee"></i></a></td>
+        				<td class="text-center"><a href="fees?id=${stu.studentID}" class="btn btn-sm btn-light border text-success"><i class="bi bi-bank"></i> Pay Fees</a></td>
+        				-->
+
+   					<!--<td class="text-center"><a href="batchShift?batchMode=${stu.batchMode}" class="btn btn-sm btn-outline-warning">
+        				<i class="bi bi-shuffle"></i> Shift Batch</a></td>
+
+						<td class="text-center"><a href="batchShift?batchMode=${stu.batchMode}" class="btn btn-sm btn-outline-warning" data-bs-toggle="tooltip" title="Shift Student Batch">
+        				<i class="bi bi-arrow-left-right"></i></a></td>-->
+        				
+        				<td class="text-center"><a href="batchShift?id=${stu.studentID}" class="btn btn-sm btn-link text-decoration-none text-primary fw-semibold">
+        				<i class="bi bi-diagram-3"></i> Shift Batch</a></td>
+        				
+
             		</tr>
           		</c:forEach>
 			</tbody>

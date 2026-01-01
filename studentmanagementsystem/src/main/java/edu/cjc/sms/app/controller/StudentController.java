@@ -114,4 +114,37 @@ public class StudentController
 		m.addAttribute("data", list);
 		return "viewscreen";
 	}
+	
+	@RequestMapping("/batchShift")
+	public String batchShift(@RequestParam("id") int studentID, Model m)
+	{
+		Student stu = ssi.getSingleStudent(studentID);
+		m.addAttribute("stu", stu);
+		return "batch";
+	}
+	
+	@RequestMapping("/updateMode")
+	public String updateBatchMode(@RequestParam("studentID") int studentID, @RequestParam("batchMode") String batchMode, Model m)
+	{
+	    ssi.updateBatchMode(studentID,batchMode);
+	    List<Student> list = ssi.getStudentData();
+	    m.addAttribute("data", list);
+	    return "viewscreen";
+	}
+	
+	@RequestMapping("/editInfo")
+	public String editStudentInfo(@RequestParam("id") int studentID, Model m)
+	{
+		Student stu = ssi.getSingleStudent(studentID);
+		m.addAttribute("stu", stu);
+		return "edit";
+	}
+	
+	@RequestMapping("/edit")
+	public String editRecord(@ModelAttribute Student student, Model m)
+	{
+		List<Student> list = ssi.updateStudent(student);
+		m.addAttribute("data", list);
+		return "viewscreen";
+	}
 }
