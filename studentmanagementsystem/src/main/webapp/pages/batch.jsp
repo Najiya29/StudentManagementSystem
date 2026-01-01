@@ -1,10 +1,10 @@
-<!--<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Batch Shift</title>
+<title>Update Batch Mode</title>
 
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,77 +13,104 @@
 
 <style>
 body {
-	min-height: 100vh;
-    background: url("pictures/view.avif") no-repeat center center fixed;
+    min-height: 100vh;
+    background: linear-gradient(
+        rgba(0,0,0,0.4),
+        rgba(0,0,0,0.4)
+    ), url("pictures/view.avif") no-repeat center center fixed;
     background-size: cover;
     font-family: 'Segoe UI', sans-serif;
-    
 }
 
-.card {
+/* Main Card */
+.batch-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
     border-radius: 18px;
+    overflow: hidden;
 }
 
-.card-header {
-    background: #0d6efd;
+/* Header */
+.batch-header {
+    background: linear-gradient(135deg, #0d6efd, #084298);
     color: white;
-    border-radius: 18px 18px 0 0;
+    padding: 18px;
+    text-align: center;
+}
+
+/* Table */
+.table th {
+    width: 45%;
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+/* Select */
+.form-select {
+    height: 45px;
+    border-radius: 10px;
+}
+
+/* Buttons */
+.btn-action {
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-weight: 600;
 }
 </style>
-
 </head>
 
 <body>
 
 <div class="container d-flex justify-content-center align-items-center py-5">
+    <div class="col-lg-7 col-md-9">
 
-    <div class="col-md-8 col-lg-6">
-        <div class="card shadow-lg">
+        <div class="card batch-card shadow-lg">
 
-            <div class="card-header text-center">
-                <h4 class="mb-0">
+            <!-- Header -->
+            <div class="batch-header">
+                <h3 class="mb-0">
                     <i class="bi bi-arrow-left-right"></i> Update Student Batch Mode
-                </h4>
+                </h3>
+                <small>Switch between Online and Offline batches</small>
             </div>
 
-            <div class="card-body">
+            <div class="card-body p-4">
 
-                <!-- Student Details -->
                 <table class="table table-bordered align-middle mb-4">
                     <tr>
-                        <th width="45%">Student ID</th>
+                        <th>Student ID</th>
                         <td>${stu.studentID}</td>
                     </tr>
                     <tr>
-                        <th>Student Full Name</th>
+                        <th>Full Name</th>
                         <td>${stu.studentFullName}</td>
                     </tr>
                     <tr>
-                        <th>Student Course</th>
+                        <th>Course</th>
                         <td>${stu.studentCourse}</td>
                     </tr>
                     <tr>
-                        <th>Student Batch</th>
+                        <th>Batch No</th>
                         <td>${stu.batchNo}</td>
                     </tr>
                     <tr>
-                        <th>Previous Batch Mode</th>
+                        <th>Current Batch Mode</th>
                         <td>
-                            <span class="badge bg-secondary">
+                            <span class="badge bg-secondary px-3 py-2">
                                 ${stu.batchMode}
                             </span>
                         </td>
                     </tr>
                 </table>
 
-                <!-- Update Form -->
                 <form action="updateMode" method="post">
 
                     <input type="hidden" name="studentID" value="${stu.studentID}">
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label class="form-label fw-semibold">
-                            <i class="bi bi-pencil-square"></i> Select Updated Batch Mode
+                            <i class="bi bi-pencil-square"></i> Select New Batch Mode
                         </label>
                         <select name="batchMode" class="form-select" required>
                             <option disabled selected>-- Select Batch Mode --</option>
@@ -93,11 +120,11 @@ body {
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <a href="view" class="btn btn-outline-secondary">
+                        <a href="view" class="btn btn-outline-secondary btn-action">
                             <i class="bi bi-arrow-left"></i> Back
                         </a>
 
-                        <button type="submit" class="btn btn-warning px-4">
+                        <button type="submit" class="btn btn-warning btn-action">
                             <i class="bi bi-check-circle"></i> Update Mode
                         </button>
                     </div>
@@ -106,8 +133,8 @@ body {
 
             </div>
         </div>
-    </div>
 
+    </div>
 </div>
 
 <!-- Bootstrap JS -->
