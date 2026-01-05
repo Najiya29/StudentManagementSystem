@@ -22,7 +22,6 @@ body {
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* Main Card */
 .batch-card {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
@@ -30,7 +29,6 @@ body {
     overflow: hidden;
 }
 
-/* Header */
 .batch-header {
     background: linear-gradient(135deg, #0d6efd, #084298);
     color: white;
@@ -38,20 +36,17 @@ body {
     text-align: center;
 }
 
-/* Table */
 .table th {
     width: 45%;
     background-color: #f8f9fa;
     font-weight: 600;
 }
 
-/* Select */
 .form-select {
     height: 45px;
     border-radius: 10px;
 }
 
-/* Buttons */
 .btn-action {
     border-radius: 30px;
     padding: 10px 30px;
@@ -67,7 +62,6 @@ body {
 
         <div class="card batch-card shadow-lg">
 
-            <!-- Header -->
             <div class="batch-header">
                 <h3 class="mb-0">
                     <i class="bi bi-arrow-left-right"></i> Update Student Batch Mode
@@ -106,31 +100,34 @@ body {
 
                 <form action="updateMode" method="post">
 
-                    <input type="hidden" name="studentID" value="${stu.studentID}">
+    			<input type="hidden" name="studentID" value="${stu.studentID}">
+    				<div class="mb-4">
+        			<label class="form-label fw-semibold">
+            			<i class="bi bi-diagram-3"></i> Select New Batch No
+        			</label>
+        			<select name="batchNo" class="form-select" required>
+            			<option disabled selected>-- Select Batch No --</option>
+						<option>FDJ-196</option>
+            			<option>REG-196</option>
+            			<option>FDJ-198</option>
+            			<option>REG-198</option>
+            			<option>FDJ-195</option>
+            			<option>REG-195</option>
+        			</select>
+    				</div>
 
-                    <div class="mb-4">
-                        <label class="form-label fw-semibold">
-                            <i class="bi bi-pencil-square"></i> Select New Batch Mode
-                        </label>
-                        <select name="batchMode" class="form-select" required>
-                            <option disabled selected>-- Select Batch Mode --</option>
-                            <option>Online</option>
-                            <option>Offline</option>
-                        </select>
-                    </div>
+    				<div class="d-flex justify-content-between">
+        			<a href="view" class="btn btn-outline-secondary btn-action">
+            			<i class="bi bi-arrow-left"></i> Back
+        			</a>
 
-                    <div class="d-flex justify-content-between">
-                        <a href="view" class="btn btn-outline-secondary btn-action">
-                            <i class="bi bi-arrow-left"></i> Back
-                        </a>
+        			<button type="submit" class="btn btn-warning btn-action">
+            			<i class="bi bi-check-circle"></i> Update
+        			</button>
+    				</div>
 
-                        <button type="submit" class="btn btn-warning btn-action">
-                            <i class="bi bi-check-circle"></i> Update Mode
-                        </button>
-                    </div>
-
-                </form>
-
+				</form>	
+				
             </div>
         </div>
 

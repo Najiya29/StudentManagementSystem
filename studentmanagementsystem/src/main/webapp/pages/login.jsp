@@ -21,19 +21,17 @@
 body {
     min-height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background: url("pictures/alogin.webp") no-repeat center center fixed;
+    background: url("pictures/log.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 
-/* Dark overlay */
 .overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.55);
-    backdrop-filter: blur(6px);
+   background: rgba(0,0,0,0.25);
+   /* backdrop-filter: blur(1px);*/
 }
 
-/* Login card */
 .login-card {
     width: 420px;
     background: #ffffff;
@@ -43,7 +41,6 @@ body {
     animation: fadeInUp 0.6s ease;
 }
 
-/* Logo circle */
 .login-icon {
     width: 75px;
     height: 75px;
@@ -64,7 +61,6 @@ body {
     margin-bottom: 25px;
 }
 
-/* Input */
 .form-control {
     height: 48px;
     border-radius: 12px;
@@ -76,7 +72,6 @@ body {
     box-shadow: 0 0 0 0.15rem rgba(13,110,253,.25);
 }
 
-/* Button */
 .btn-login {
     height: 48px;
     border-radius: 30px;
@@ -91,7 +86,6 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* Error */
 .login-error {
     text-align: center;
     color: #dc3545;
@@ -100,7 +94,6 @@ body {
     animation: shake 0.4s;
 }
 
-/* Animations */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -133,12 +126,12 @@ body {
             <div class="login-error">${login_fail}</div>
         </c:if>
 
-        <form action="login" method="post">
+        <form action="login" >
 
             <div class="mb-3">
                 <label class="form-label fw-semibold">Username</label>
                 <input type="text" name="username" class="form-control"
-                       placeholder="Enter admin username" required>
+                       placeholder="Enter username" required>
             </div>
 
             <div class="mb-4">

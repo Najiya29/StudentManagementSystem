@@ -23,18 +23,15 @@ body {
     background: #f4f6f9;
 }
 
-/* Navbar brand */
 .navbar-brand span {
     font-size: 18px;
 }
 
-/* Page heading */
 .page-title {
     font-weight: 700;
     margin-bottom: 30px;
 }
 
-/* Dashboard cards */
 .dashboard-card {
     height: 190px;
     border-radius: 18px;
@@ -51,20 +48,17 @@ body {
     box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
-/* Card icons */
 .dashboard-icon {
     font-size: 42px;
     margin-bottom: 12px;
 }
 
-/* Buttons */
 .btn-dashboard {
     border-radius: 30px;
     padding: 8px 28px;
     font-size: 14px;
 }
 
-/* Card colors */
 .bg-enroll {
     background: linear-gradient(135deg, #198754, #20c997);
     color: white;

@@ -26,7 +26,6 @@ body {
     background-size: cover;
 }
 
-/* Card */
 .edit-card {
     border-radius: 22px;
     background: rgba(255, 255, 255, 0.95);
@@ -39,13 +38,11 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Title */
 .page-title {
     font-weight: 700;
     color: #0d6efd;
 }
 
-/* Inputs */
 .form-control, .form-select {
     height: 48px;
     border-radius: 14px;
@@ -57,12 +54,10 @@ body {
     box-shadow: 0 0 0 0.2rem rgba(13,110,253,.25);
 }
 
-/* Labels */
 .form-label {
     font-weight: 600;
 }
 
-/* Buttons */
 .btn-update {
     border-radius: 30px;
     padding: 10px 35px;
@@ -91,7 +86,7 @@ body {
                     <p class="text-muted small">Update student information carefully</p>
                 </div>
 
-                <form action="edit" method="post">
+                <form action="edit">
 
                     <input type="hidden" name="studentID" value="${stu.studentID}">
 

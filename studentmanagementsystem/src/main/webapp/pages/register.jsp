@@ -28,7 +28,6 @@ body {
     background-size: cover;
 }
 
-/* Card */
 .enroll-card {
     background: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(12px);
@@ -42,13 +41,11 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Heading */
 .form-title {
     font-weight: 700;
     color: #0d6efd;
 }
 
-/* Inputs */
 .form-label {
     font-weight: 600;
     font-size: 14px;
@@ -67,7 +64,6 @@ body {
     box-shadow: 0 0 0 0.2rem rgba(13,110,253,.25);
 }
 
-/* Buttons */
 .btn-submit {
     background: linear-gradient(135deg, #0d6efd, #6610f2);
     border: none;
@@ -86,7 +82,6 @@ body {
     padding: 10px 30px;
 }
 
-/* Section Divider */
 .section-title {
     font-size: 15px;
     font-weight: 600;
@@ -114,7 +109,7 @@ body {
                         <p class="text-muted small">Fill student details carefully</p>
                     </div>
 
-                    <form action="enroll" method="post">
+                    <form action="enroll">
 
                         <div class="section-title">Personal Information</div>
                         <div class="row mb-3">

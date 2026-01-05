@@ -23,4 +23,6 @@ public interface StudentServiceInt
 	
 	public List<Student> updateStudent(Student student);
 
+	public List<Student> pageingOfUniversity(int pageno, int pageSize);
+
 }

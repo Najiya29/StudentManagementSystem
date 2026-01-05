@@ -124,9 +124,9 @@ public class StudentController
 	}
 	
 	@RequestMapping("/updateMode")
-	public String updateBatchMode(@RequestParam("studentID") int studentID, @RequestParam("batchMode") String batchMode, Model m)
+	public String updateBatchMode(@RequestParam("studentID") int studentID,@RequestParam("batchNo") String batchNo, Model m)
 	{
-	    ssi.updateBatchMode(studentID,batchMode);
+	    ssi.updateBatchMode(studentID,batchNo);
 	    List<Student> list = ssi.getStudentData();
 	    m.addAttribute("data", list);
 	    return "viewscreen";
@@ -145,6 +145,15 @@ public class StudentController
 	{
 		List<Student> list = ssi.updateStudent(student);
 		m.addAttribute("data", list);
+		return "viewscreen";
+	}
+	
+	@RequestMapping("/pageing")
+	public String pagenation(@RequestParam("pageno") int pageno, Model m)
+	{
+		int pageSize = 2;
+		List<Student> list = ssi.pageingOfUniversity(pageno,pageSize);
+		m.addAttribute("data",list);
 		return "viewscreen";
 	}
 }

@@ -19,18 +19,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
+body 
+{
     min-height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(
-        rgba(0,0,0,0.45),
-        rgba(0,0,0,0.45)
-    ), url("pictures/pic.jpg") no-repeat center center fixed;
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url("pictures/pic.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 
-/* Glass Card */
-.glass-card {
+.glass-card 
+{
     background: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(12px);
     border-radius: 22px;
@@ -38,23 +36,29 @@ body {
     animation: fadeUp 0.6s ease;
 }
 
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(25px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes fadeUp 
+{
+    from 
+    { opacity: 0; transform: translateY(25px); 
+    }
+    to 
+    { opacity: 1; transform: translateY(0); 
+    }
 }
 
-/* Title */
-.page-title {
+.page-title 
+{
     font-weight: 700;
     color: #0d6efd;
 }
 
-/* Table */
-.table {
+.table 
+{
     font-size: 14px;
 }
 
-thead th {
+thead th 
+{
     position: sticky;
     top: 0;
     background: #0d6efd !important;
@@ -64,41 +68,46 @@ thead th {
     z-index: 10;
 }
 
-tbody td {
+tbody td 
+{
     text-align: center;
     vertical-align: middle;
 }
 
-tbody tr:hover {
+tbody tr:hover 
+{
     background-color: #f1f5ff;
 }
 
-/* Action Buttons */
-.action-link {
+.action-link 
+{
     text-decoration: none;
     font-weight: 600;
 }
 
-.action-link:hover {
+.action-link:hover 
+{
     text-decoration: underline;
 }
 
-.delete-link {
+.delete-link 
+{
     color: #dc3545;
 }
 
-.delete-link:hover {
+.delete-link:hover 
+{
     color: #a71d2a;
 }
 
-/* Filters */
 .filter-bar select,
-.filter-bar button {
+.filter-bar button 
+{
     border-radius: 12px;
 }
 
-/* Back Button */
-.btn-back {
+.btn-back 
+{
     border-radius: 30px;
     padding: 10px 30px;
 }
@@ -116,7 +125,7 @@ tbody tr:hover {
                 <i class="bi bi-people-fill"></i> Student Records
             </h4>
 
-            <form action="searchByMode" method="get" class="row g-2 filter-bar">
+            <form action="searchByMode" class="row g-2 filter-bar">
                 <div class="col-md-4">
                     <select class="form-select" name="batchNo">
                         <option value="">All Batches</option>
@@ -207,6 +216,14 @@ tbody tr:hover {
                 </tbody>
             </table>
         </div>
+        
+	<div class="d-flex justify-content-center mt-4">
+    <div class="btn-group shadow-sm" role="group">
+        <a href="pageing?pageno=0" class="btn btn-outline-primary rounded-start">1</a>
+        <a href="pageing?pageno=1" class="btn btn-outline-primary">2</a>
+        <a href="pageing?pageno=2" class="btn btn-outline-primary rounded-end">3</a>
+    </div>
+</div>
 
         <div class="text-center mt-4">
             <a href="back" class="btn btn-outline-secondary btn-back">

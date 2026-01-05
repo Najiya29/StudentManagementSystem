@@ -22,7 +22,6 @@ body {
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* Glass Card */
 .fees-card {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
@@ -30,7 +29,6 @@ body {
     overflow: hidden;
 }
 
-/* Header */
 .card-header-custom {
     background: linear-gradient(135deg, #0d6efd, #084298);
     color: white;
@@ -38,27 +36,23 @@ body {
     text-align: center;
 }
 
-/* Table Styling */
 .table th {
     width: 35%;
     background-color: #f8f9fa;
     font-weight: 600;
 }
 
-/* Input */
 .form-control {
     height: 45px;
     border-radius: 10px;
 }
 
-/* Button */
 .btn-update {
     border-radius: 30px;
     padding: 10px 35px;
     font-weight: 600;
 }
 
-/* Fees Highlight */
 .fees-amount {
     font-size: 1.1rem;
     font-weight: 700;
@@ -117,7 +111,7 @@ body {
                     </tr>
                 </table>
 
-                <form action="update" method="post">
+                <form action="update">
 
                     <input type="hidden" name="studentID" value="${stu.studentID}">
 

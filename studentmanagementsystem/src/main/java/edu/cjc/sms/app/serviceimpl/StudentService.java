@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
@@ -73,13 +74,13 @@ public class StudentService implements StudentServiceInt{
 	}
 
 	@Override
-	public void updateBatchMode(int studentID, String batchMode) 
-	{		
+	public void updateBatchMode(int studentID, String batchNo) 
+	{
 		Optional<Student> op = sr.findById(studentID);
 		if(op.isPresent())
 		{
 			Student student = op.get();
-			student.setBatchMode(batchMode);
+			student.setBatchNo(batchNo);
 			sr.save(student);
 		}
 		else
@@ -87,12 +88,20 @@ public class StudentService implements StudentServiceInt{
 			throw new ArithmeticException("No Student ID Found");
 		}
 	}
-
+	
 	@Override
 	public List<Student> updateStudent(Student student) 
 	{
 		sr.save(student);
 		List<Student> list = sr.findAll();
+		return list;
+	}
+
+	@Override
+	public List<Student> pageingOfUniversity(int pageno, int pageSize) 
+	{
+		PageRequest p = PageRequest.of(pageno, pageSize);
+		List<Student> list = sr.findAll(p).getContent();
 		return list;
 	}
 }

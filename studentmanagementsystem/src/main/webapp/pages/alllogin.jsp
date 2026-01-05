@@ -21,14 +21,13 @@ body {
     height: 100vh;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(
-        rgba(0,0,0,0.55),
-        rgba(0,0,0,0.55)
+        rgba(0,0,0,0.25),
+        rgba(0,0,0,0.25)
     ), url("pictures/back.jpg");
     background-size: cover;
     background-position: center;
 }
 
-/* Glass Card */
 .login-card {
     width: 400px;
     background: rgba(255, 255, 255, 0.92);
@@ -48,13 +47,11 @@ body {
     }
 }
 
-/* Header */
 .portal-title {
     font-weight: 700;
     color: #0d6efd;
 }
 
-/* Buttons */
 .portal-btn {
     padding: 12px;
     font-size: 16px;
